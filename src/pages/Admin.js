@@ -4,6 +4,7 @@ import { Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import Addproduct from "../components/Addproduct";
+import Delproduct from "../components/Delproduct";
 
 const Admin = () => {
   const [comp, setComp] = useState("1");
@@ -11,8 +12,10 @@ const Admin = () => {
     switch (comp) {
       case "2":
         return <Addproduct />;
+      case "3":
+        return <Delproduct />;
       default:
-        return <h1>No project match</h1>;
+        return <Addproduct />;
     }
   };
   return (
@@ -37,31 +40,22 @@ const Admin = () => {
           Height={{ lg: "auto", xs: "70px" }}
           borderRight={"2px solid grey"}
         >
-          <Button
-            sx={{
-              color: "black",
-              fontWeight: "bold",
-              fontSize: "17px",
-              backgroundColor: "yellowgreen",
-            }}
-            startIcon={<AddToPhotosIcon />}
+          <button
+            className="bg-yellow-400 p-2 font-bold  rounded-md text-base hover:outline outline-2"
             onClick={() => {
               setComp("2");
             }}
           >
-            Add Product
-          </Button>
-          <Button
-            sx={{
-              color: "black",
-              fontWeight: "bold",
-              fontSize: "17px",
-              backgroundColor: "yellowgreen",
+            <AddToPhotosIcon /> Add Product
+          </button>
+          <button
+            className="bg-yellow-400 p-2 font-bold rounded-md text-base hover:outline outline-2"
+            onClick={() => {
+              setComp("3");
             }}
-            startIcon={<DeleteIcon />}
           >
-            Delete Product
-          </Button>
+            <DeleteIcon /> Delete Product
+          </button>
         </Box>
         <Box width={"100%"}>{compon(comp)}</Box>
       </Box>

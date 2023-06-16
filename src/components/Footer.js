@@ -5,7 +5,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 
 const Footer = () => {
   return (
-    <div className="px-8 bg-amber-400 ">
+    <div className="px-8 bg-amber-500 ">
       <div className="flex justify-center p-2">
         <div className="rounded-full p-1 bg-white">
           {" "}

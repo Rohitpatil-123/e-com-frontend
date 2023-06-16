@@ -19,14 +19,13 @@ const Searchdash = () => {
   const [data, setData] = useState([]);
 
   const getdata = async () => {
-    const resdata = await axios.get(
-      "https://e-com-rksk.onrender.com/getallproduct"
-    );
+    const resdata = await axios.get("http://localhost:5000/getallproduct");
     setData(resdata.data.data);
   };
 
   useEffect(() => {
     getdata();
+    console.log(data);
   }, [search, price]);
   return (
     <Box px={{ lg: 10, xs: 1 }} py={1}>
@@ -39,7 +38,6 @@ const Searchdash = () => {
               width: { lg: "70ch", md: "50ch", xs: "20ch" },
               color: "yellow",
               position: "relative",
-              zIndex: -1,
             }}
             variant="standard"
           >
@@ -79,9 +77,19 @@ const Searchdash = () => {
             flexWrap={"wrap"}
             gap={{ lg: 2, xs: 1 }}
           >
-            {data.map((product) => {
-              return <Custcard data={product} />;
-            })}
+            {data
+              .filter((value) => {
+                if (search === "") {
+                  return value;
+                } else if (
+                  value.name.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return value;
+                }
+              })
+              .map((product) => {
+                return <Custcard data={product} name="Add To Cart" />;
+              })}
           </Box>
         ) : (
           <Loader />

@@ -4,7 +4,7 @@ import Regist from "../assets/login.png";
 import { Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -14,12 +14,15 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import PersonIcon from "@mui/icons-material/Person";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 function Login() {
   const [errmesg, seterrmesg] = useState("");
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -35,15 +38,16 @@ function Login() {
     seterrmesg("");
 
     try {
-      const data = await axios.post(
-        "https://e-com-rksk.onrender.com/login",
-        values,
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      toast.success(data.data.message);
+      const data = await axios.post("http://localhost:5000/login", values, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+      if (data.data.success) {
+        toast.success(data.data.message);
+        navigate("/");
+      } else {
+        toast.error(data.data.success);
+      }
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -112,6 +116,13 @@ function Login() {
                   label="Password"
                 />
               </FormControl>
+              <Typography
+                textAlign={"center"}
+                sx={{ color: "red", fontWeight: "bold" }}
+                mt={2}
+              >
+                {errmesg}
+              </Typography>
               <Box
                 mt={5}
                 display="flex"

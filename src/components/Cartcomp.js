@@ -5,7 +5,7 @@ import image from "../assets/banner1.jpg";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-const Cartcomp = () => {
+const Cartcomp = (props) => {
   const [count, setCount] = React.useState(1);
   const plus = () => {
     setCount(count + 1);
@@ -19,22 +19,31 @@ const Cartcomp = () => {
       style={{ display: "flex", padding: "2px" }}
       mx={1}
       my={1}
+      borderBottom={"2px solid grey"}
     >
       <Box width="30%" mx={1}>
-        <img src={image} alt="image" width="100%" height="100%" />
+        <img
+          src={props.data.image.url}
+          alt="im"
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "block",
+            objectFit: "fill",
+          }}
+        />
       </Box>
       <Box
         style={{ display: "flex", flexDirection: "column" }}
-        width="60%"
+        width="70%"
         mx={1}
         textOverflow={"inherit"}
       >
-        <Typography variant="h5">Name of product</Typography>
-        <Typography variant="h6">89338</Typography>
-        <Typography>
-          description of the product x sjhbxs csdcbsdhc s cdshdcsghdc sdc
-          sdgcvsd csdcsvdgcsdc sdc sgc sdgc{" "}
+        <Typography variant="h5" fontWeight={"bold"}>
+          {props.data.name}
         </Typography>
+        <Typography variant="h6">&#8377; {props.data.price}</Typography>
+        <Typography>{props.data.description}</Typography>
         <Box display={"flex"} justifyContent="flex-start" mt={1} gap={3}>
           <Box display={"flex"} justifyContent="flex-start" gap={4}>
             <Box sx={{ cursor: "pointer" }}>

@@ -27,7 +27,7 @@ const Register = () => {
     password: "",
   });
 
-  const { isAuthenticated, setisAuthenticated, loading, setLoading } =
+  const { Authenticated, setAuthenticated, loading, setLoading } =
     useContext(Context);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -52,7 +52,7 @@ const Register = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        "https://e-com-rksk.onrender.com/register",
+        "http://localhost:5000/register",
         values,
         {
           headers: { "Content-Type": "application/json" },
@@ -60,15 +60,14 @@ const Register = () => {
         }
       );
       toast.success(data.message);
-      setisAuthenticated(true);
+      setAuthenticated(true);
       setLoading(false);
     } catch (error) {
       toast.error("some error");
-      console.log(error);
-      setisAuthenticated(false);
+      setAuthenticated(false);
     }
   };
-  if (isAuthenticated) return <Navigate to="/" />;
+  if (Authenticated) return <Navigate to="/" />;
   return (
     <Box width={"100%"} mt={10} px={{ lg: 25, xs: 5 }}>
       <Grid container>

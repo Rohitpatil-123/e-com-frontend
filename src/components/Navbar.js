@@ -17,7 +17,7 @@ import "../App.css";
 
 export default function ButtonAppBar() {
   const [nav, setnav] = React.useState(false);
-  const { isAuthenticated, setisAuthenticated, loading, setLoading } =
+  const { Authenticated, setAuthenticated, loading, setLoading } =
     useContext(Context);
   const navigate = useNavigate();
   const navbarstate = () => {
@@ -27,12 +27,12 @@ export default function ButtonAppBar() {
   const handleLogout = async () => {
     try {
       setLoading(true);
-      const data = await axios.get("https://e-com-rksk.onrender.com/logout", {
+      const data = await axios.get("http://localhost:5000/logout", {
         withCredentials: true,
       });
       if (data) {
         toast.success("logged out ");
-        isAuthenticated(false);
+        setAuthenticated(false);
       }
 
       setLoading(false);
@@ -40,6 +40,21 @@ export default function ButtonAppBar() {
       toast.error("error ");
     }
   };
+  const isauth = async () => {
+    const resdata = await axios.get("http://localhost:5000/getuser", {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
+    if (resdata.data.success) {
+      setAuthenticated(true);
+    } else {
+      setAuthenticated(false);
+    }
+  };
+  React.useEffect(() => {
+    isauth();
+  });
+
   return (
     <Box sx={{ flexGrow: 1 }} position="sticky" top={0}>
       <AppBar class="bg-amber-400">
@@ -82,31 +97,41 @@ export default function ButtonAppBar() {
             >
               cart
             </Button>
-
-            <Button
-              sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
-              onClick={() => {
-                navigate("/register");
-              }}
-            >
-              Register
-            </Button>
-            <Button
-              sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Login
-            </Button>
-
-            <Button
-              disable={loading}
-              sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
-              onClick={handleLogout}
-            >
-              Logout
-            </Button>
+            {Authenticated ? (
+              ""
+            ) : (
+              <Button
+                sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                Register
+              </Button>
+            )}
+            {Authenticated ? (
+              ""
+            ) : (
+              <Button
+                sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                Login
+              </Button>
+            )}
+            {Authenticated ? (
+              <Button
+                disable={loading}
+                sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            ) : (
+              ""
+            )}
           </div>
           <div className="menubut">
             {nav ? (
