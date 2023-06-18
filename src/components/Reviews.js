@@ -2,6 +2,9 @@ import React from "react";
 import Box from "@mui/material/Box";
 import "../App.css";
 import Rating from "@mui/material/Rating";
+import dawood from "../assets/dawood.png";
+import sahil from "../assets/sahil.png";
+import nouman from "../assets/nouman.png";
 
 const Reviews = () => {
   return (
@@ -18,7 +21,7 @@ const Reviews = () => {
         borderTop={"2px solid yellow"}
         borderRight={"2px solid yellow"}
         p={2}
-        width="33%"
+        width={{ lg: "33%", xs: "100%" }}
         display="flex"
         justifyContent="center"
         flexDirection={"column"}
@@ -27,15 +30,23 @@ const Reviews = () => {
         <Box>
           <Box
             borderRadius={"50%"}
-            width={"120px"}
-            height="120px"
             border={"1px solid grey"}
-            sx={{ backgroundColor: "lightgray", overflow: "hidden" }}
+            sx={{
+              width: "200px",
+              height: "150px",
+              backgroundImage: `url(${dawood})`,
+              // objectFit: "fill"
+              alignContent: "center",
+              backgroundRepeat: "no-repeat",
+              // backgroundSize: "contain",
+            }}
           ></Box>
-          <Box textAlign={"center"}>Dawood Khatri</Box>
+          <Box textAlign={"center"} fontWeight={"bold"} fontSize={"20px"}>
+            Dawood Khatri
+          </Box>
           <Rating
             name="read-only"
-            value={5}
+            value={4}
             readOnly
             sx={{
               "& .MuiRating-iconFilled": {
@@ -48,8 +59,8 @@ const Reviews = () => {
           />
         </Box>
         <Box>
-          very good service provided by them cdbchsdc dchsbdcsd csdhcbsdhc
-          dcshjdcs dcshdc sd{" "}
+          very good service provided by them website is very smooth and user
+          friendly
         </Box>
       </Box>
       <Box
@@ -57,7 +68,7 @@ const Reviews = () => {
         borderTop={"2px solid yellow"}
         borderRight={"2px solid yellow"}
         p={2}
-        width="33%"
+        width={{ lg: "33%", xs: "100%" }}
         display="flex"
         justifyContent="center"
         flexDirection={"column"}
@@ -66,15 +77,23 @@ const Reviews = () => {
         <Box>
           <Box
             borderRadius={"50%"}
-            width={"120px"}
-            height="120px"
             border={"1px solid grey"}
-            sx={{ backgroundColor: "lightgray", overflow: "hidden" }}
+            sx={{
+              width: "200px",
+              height: "150px",
+              backgroundImage: `url(${nouman})`,
+              // objectFit: "fill"
+              alignContent: "center",
+              backgroundRepeat: "no-repeat",
+              // backgroundSize: "contain",
+            }}
           ></Box>
-          <Box textAlign={"center"}>Dawood Khatri</Box>
+          <Box textAlign={"center"} fontWeight={"bold"} fontSize={"20px"}>
+            Nouman
+          </Box>
           <Rating
             name="read-only"
-            value={5}
+            value={4}
             readOnly
             sx={{
               "& .MuiRating-iconFilled": {
@@ -87,8 +106,8 @@ const Reviews = () => {
           />
         </Box>
         <Box>
-          very good service provided by them cdbchsdc dchsbdcsd csdhcbsdhc
-          dcshjdcs dcshdc sd{" "}
+          very good service provided by them website is very smooth and user
+          friendly
         </Box>
       </Box>
       <Box
@@ -96,7 +115,7 @@ const Reviews = () => {
         borderTop={"2px solid yellow"}
         borderRight={"2px solid yellow"}
         p={2}
-        width="33%"
+        width={{ lg: "33%", xs: "100%" }}
         display="flex"
         justifyContent="center"
         flexDirection={"column"}
@@ -105,15 +124,23 @@ const Reviews = () => {
         <Box>
           <Box
             borderRadius={"50%"}
-            width={"120px"}
-            height="120px"
             border={"1px solid grey"}
-            sx={{ backgroundColor: "lightgray", overflow: "hidden" }}
+            sx={{
+              width: "200px",
+              height: "150px",
+              backgroundImage: `url(${sahil})`,
+              // objectFit: "fill"
+              alignContent: "center",
+              backgroundRepeat: "no-repeat",
+              // backgroundSize: "contain",
+            }}
           ></Box>
-          <Box textAlign={"center"}>Dawood Khatri</Box>
+          <Box textAlign={"center"} fontWeight={"bold"} fontSize={"20px"}>
+            Sahil
+          </Box>
           <Rating
             name="read-only"
-            value={5}
+            value={4}
             readOnly
             sx={{
               "& .MuiRating-iconFilled": {
@@ -126,8 +153,8 @@ const Reviews = () => {
           />
         </Box>
         <Box>
-          very good service provided by them cdbchsdc dchsbdcsd csdhcbsdhc
-          dcshjdcs dcshdc sd{" "}
+          very good service provided by them website is very smooth and user
+          friendly
         </Box>
       </Box>
     </Box>

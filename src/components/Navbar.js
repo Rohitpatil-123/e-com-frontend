@@ -57,7 +57,7 @@ export default function ButtonAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }} position="sticky" top={0}>
-      <AppBar class="bg-amber-400">
+      <AppBar class="bg-amber-500 lg:px-20  ">
         <Toolbar>
           <Box>
             <img

@@ -52,7 +52,7 @@ const Custcard = (props) => {
           alt="im"
           height="150px"
           width="100%"
-          sx={{ objectFit: "fill" }}
+          sx={{ objectFit: "fill", zIndex: 1 }}
           onClick={handleclick}
         />
       </Box>
@@ -62,7 +62,7 @@ const Custcard = (props) => {
         </Typography>
         <Typography textAlign={"center"}>&#8377; {props.data.price}</Typography>
         <button
-          className="bg-yellow-400 p-2  rounded-md text-base hover:outline outline-2"
+          className="bg-yellow-400 p-2 font-bold rounded-md text-base hover:outline outline-2"
           onClick={addcart}
         >
           {props.name}

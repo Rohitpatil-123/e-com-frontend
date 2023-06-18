@@ -25,17 +25,22 @@ const Searchdash = () => {
 
   useEffect(() => {
     getdata();
-    console.log(data);
   }, [search, price]);
   return (
     <Box px={{ lg: 10, xs: 1 }} py={1}>
       <Slides />
+
       <Box p={2}>
-        <Box borderBottom={"1px solid grey"} padding={2}>
+        <Box
+          borderBottom={"1px solid grey"}
+          padding={2}
+          display={"flex"}
+          justifyContent={"center"}
+        >
           <FormControl
             sx={{
               m: 1,
-              width: { lg: "70ch", md: "50ch", xs: "20ch" },
+              width: { lg: "80ch", md: "50ch", xs: "30ch" },
               color: "yellow",
               position: "relative",
             }}
@@ -51,11 +56,10 @@ const Searchdash = () => {
               }}
             />
           </FormControl>
-          <Select
+          {/* <Select
             value={price}
             placeholder="select the category"
             onChange={(event) => setPrice(event.target.value)}
-            displayEmpty
             inputProps={{ "aria-label": "Without label" }}
             // sx={{ zIndex: -1 }}
           >
@@ -66,7 +70,7 @@ const Searchdash = () => {
             <MenuItem value={20}> less than 20k</MenuItem>
             <MenuItem value={30}> less than 30k</MenuItem>
             <MenuItem value={30}>Greater Than 30k</MenuItem>
-          </Select>
+          </Select> */}
         </Box>
         {data.length !== 0 ? (
           <Box
@@ -88,7 +92,13 @@ const Searchdash = () => {
                 }
               })
               .map((product) => {
-                return <Custcard data={product} name="Add To Cart" />;
+                return (
+                  <Custcard
+                    data={product}
+                    name="Add To Cart"
+                    key={product._id}
+                  />
+                );
               })}
           </Box>
         ) : (

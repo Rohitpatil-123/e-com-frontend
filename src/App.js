@@ -9,7 +9,8 @@ import { Toaster } from "react-hot-toast";
 import Addproduct from "./components/Addproduct";
 import Cartpage from "./pages/Cartpage";
 import Searchdash from "./pages/Searchdash";
-import Admin from "./pages/Admin";
+
+import Adminauth from "./components/Adminauth";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,7 @@ function App() {
         <Route path="/Product" element={<Product />} />
         <Route path="/Addproduct" element={<Addproduct />} />
         <Route path="/cart" element={<Cartpage />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={<Adminauth />} />
       </Routes>
       <Footer />
       <Toaster />

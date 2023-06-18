@@ -1,25 +1,19 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import banner1 from "../assets/banner1.jpg";
-import banner2 from "../assets/banner2.jpg";
-import banner3 from "../assets/banner3.jpg";
+import banner1 from "../assets/bannernn1.png";
+import banner2 from "../assets/bannernn3.png";
+import banner3 from "../assets/bannern3.png";
 import Box from "@mui/material/Box";
 
 export default function Slides(props) {
   var items = [
     {
-      name: "Random Name #1",
-      description: "Probably the most random thing you have ever seen!",
       img: banner1,
     },
     {
-      name: "Random Name #2",
-      description: "Hello World!",
       img: banner2,
     },
     {
-      name: "Random Name #2",
-      description: "Hello World!",
       img: banner3,
     },
   ];
@@ -36,10 +30,17 @@ export default function Slides(props) {
 function Item(props) {
   return (
     <Box class="w-full px-8 py-1">
-      <div
-        class="w-full h-80 bg-cover  bg-no-repeat"
-        style={{ backgroundImage: `url(${props.item.img})` }}
-      ></div>
+      {/* <div
+        style={{
+          width: "100%",
+          height: "450px",
+          backgroundImage: `url(${props.item.img})`,
+          objectFit: "fill",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div> */}
+      <img src={props.item.img} alt="di" width={"100%"} height="100%" />
     </Box>
   );
 }

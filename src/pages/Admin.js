@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import Addproduct from "../components/Addproduct";
 import Delproduct from "../components/Delproduct";
+import ListAltIcon from "@mui/icons-material/ListAlt";
 
 const Admin = () => {
   const [comp, setComp] = useState("1");
@@ -55,6 +56,14 @@ const Admin = () => {
             }}
           >
             <DeleteIcon /> Delete Product
+          </button>
+          <button
+            className="bg-yellow-400 p-2 font-bold rounded-md text-base hover:outline outline-2"
+            onClick={() => {
+              setComp("4");
+            }}
+          >
+            <ListAltIcon /> Orders
           </button>
         </Box>
         <Box width={"100%"}>{compon(comp)}</Box>

@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import React, { useEffect } from "react";
 import Rating from "@mui/material/Rating";
-import Plogo from "../assets/banner2.jpg";
+import Plogo from "../assets/bannernn1.png";
 import { Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

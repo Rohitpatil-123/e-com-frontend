@@ -1,18 +1,74 @@
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import React from "react";
-import image from "../assets/banner1.jpg";
+import React, { useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { toast } from "react-hot-toast";
+import { Context } from "..";
+import { useContext } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Cartcomp = (props) => {
   const [count, setCount] = React.useState(1);
+  const { Authenticated, setAuthenticated, loading, setLoading } =
+    useContext(Context);
+  const navigate = useNavigate();
+  const addcart = async () => {
+    try {
+      if (Authenticated) {
+        const resdata = await axios.get(
+          `http://localhost:5000/addcart/${props.data._id}`,
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        );
+        if (resdata.data.success === true) {
+          toast.success("added to cart");
+        } else {
+          toast.error("error");
+        }
+      } else {
+        toast.error("Login or Register first");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const delcart = async () => {
+    try {
+      if (Authenticated) {
+        const resdata = await axios.get(
+          `http://localhost:5000/cartremove/${props.data._id}`,
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        );
+        if (resdata.data.success === true) {
+          toast.success("removed from cart");
+        } else {
+          toast.error("error");
+        }
+      } else {
+        toast.error("Login or Register first");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const plus = () => {
+    addcart();
     setCount(count + 1);
   };
   const sub = () => {
+    delcart();
     setCount(count - 1);
+    navigate("/");
   };
+  useEffect(() => {}, [count, props.ac]);
   return (
     <Box
       height="200px"
@@ -58,11 +114,7 @@ const Cartcomp = (props) => {
               {count}
             </Box>
             <Box sx={{ cursor: "pointer" }}>
-              {count < 2 ? (
-                <RemoveIcon fontSize="small" disabled />
-              ) : (
-                <RemoveIcon fontSize="small" onClick={sub} />
-              )}
+              <RemoveIcon fontSize="small" onClick={sub} />
             </Box>
           </Box>
         </Box>
