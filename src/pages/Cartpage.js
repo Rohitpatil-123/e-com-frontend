@@ -7,12 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Empty from "../components/Empty";
 import Loader from "../components/Loader";
+import Custcard from "../components/Custcard";
 
 const Cartpage = () => {
-  const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
-  const [action, setaction] = useState("");
+
   const [success, setsuccess] = useState(false);
+  const [count, setCount] = useState({});
+
   const navigate = useNavigate();
   const fetchcart = async () => {
     const resdata = await axios.get("http://localhost:5000/cartelem", {
@@ -20,7 +22,7 @@ const Cartpage = () => {
       withCredentials: true,
     });
     if (resdata.data.success === true) {
-      setData(resdata.data.cartdata);
+      setCount(resdata.data);
       setTotal(resdata.data.total);
       setsuccess(resdata.data.success);
     } else {
@@ -41,10 +43,10 @@ const Cartpage = () => {
   };
   useEffect(() => {
     fetchcart();
-  }, [data, total]);
+  }, [count, total]);
   return (
     <>
-      {data == [] ? (
+      {count === {} ? (
         <Loader />
       ) : (
         <>
@@ -64,12 +66,12 @@ const Cartpage = () => {
                   width={{ lg: "72%", xs: "100%" }}
                   style={{ padding: "5px", borderRadius: "5px" }}
                 >
-                  {data.map((products) => {
+                  {count.cartdata.map((products, index) => {
                     return (
                       <Cartcomp
                         data={products}
-                        key={products._id}
-                        ac={action}
+                        list={count.list}
+                        index={index}
                       />
                     );
                   })}
@@ -107,7 +109,7 @@ const Cartpage = () => {
                             fontSize: "18px",
                           }}
                         >
-                          222
+                          {count.cartdata.length}
                         </td>
                       </tr>
                       <tr>

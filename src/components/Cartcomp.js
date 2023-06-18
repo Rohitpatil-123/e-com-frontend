@@ -1,19 +1,16 @@
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import React, { useEffect } from "react";
+import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { toast } from "react-hot-toast";
 import { Context } from "..";
 import { useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const Cartcomp = (props) => {
-  const [count, setCount] = React.useState(1);
-  const { Authenticated, setAuthenticated, loading, setLoading } =
-    useContext(Context);
-  const navigate = useNavigate();
+  const { Authenticated } = useContext(Context);
+
   const addcart = async () => {
     try {
       if (Authenticated) {
@@ -61,14 +58,11 @@ const Cartcomp = (props) => {
   };
   const plus = () => {
     addcart();
-    setCount(count + 1);
   };
   const sub = () => {
     delcart();
-    setCount(count - 1);
-    navigate("/");
   };
-  useEffect(() => {}, [count, props.ac]);
+
   return (
     <Box
       height="200px"
@@ -111,7 +105,7 @@ const Cartcomp = (props) => {
                 fontSize: "18px",
               }}
             >
-              {count}
+              {props.list[props.index]}
             </Box>
             <Box sx={{ cursor: "pointer" }}>
               <RemoveIcon fontSize="small" onClick={sub} />
