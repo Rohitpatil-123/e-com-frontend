@@ -17,6 +17,7 @@ import "../App.css";
 
 export default function ButtonAppBar() {
   const [nav, setnav] = React.useState(false);
+  const [admin, setAdmin] = React.useState(false);
   const { Authenticated, setAuthenticated, loading, setLoading } =
     useContext(Context);
   const navigate = useNavigate();
@@ -45,8 +46,14 @@ export default function ButtonAppBar() {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
+    console.log(resdata.data.data.isAdmin);
     if (resdata.data.success) {
       setAuthenticated(true);
+      if (resdata.data.data.isAdmin == true) {
+        setAdmin(true);
+      } else {
+        setAdmin(false);
+      }
     } else {
       setAuthenticated(false);
     }
@@ -57,7 +64,7 @@ export default function ButtonAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }} position="sticky" top={0}>
-      <AppBar class="bg-amber-500 lg:px-20  ">
+      <AppBar class="bg-amber-400 lg:px-20  ">
         <Toolbar>
           <Box>
             <img
@@ -85,7 +92,7 @@ export default function ButtonAppBar() {
               navigate("/");
             }}
           >
-            Ro-Com
+            R-Com
           </Typography>
           <div className={nav ? "navbarmod" : "navbar"}>
             <Button
@@ -120,6 +127,18 @@ export default function ButtonAppBar() {
               >
                 Login
               </Button>
+            )}
+            {admin ? (
+              <Button
+                sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
+                onClick={() => {
+                  navigate("/admin");
+                }}
+              >
+                Dashboard
+              </Button>
+            ) : (
+              ""
             )}
             {Authenticated ? (
               <Button

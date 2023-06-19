@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Custcard from "./Custcard";
 import Loader from "./Loader";
 import axios from "axios";
+import Deletecard from "./Deletecard";
 
 const Delproduct = () => {
   const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ const Delproduct = () => {
           gap={{ lg: 2, xs: 1 }}
         >
           {data.map((product) => {
-            return <Custcard data={product} name="Delete" />;
+            return <Deletecard data={product} name="Delete" />;
           })}
         </Box>
       ) : (

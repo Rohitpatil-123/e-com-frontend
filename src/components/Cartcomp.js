@@ -7,6 +7,8 @@ import { toast } from "react-hot-toast";
 import { Context } from "..";
 import { useContext } from "react";
 import axios from "axios";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Cartcomp = (props) => {
   const { Authenticated } = useContext(Context);
@@ -94,7 +96,7 @@ const Cartcomp = (props) => {
         </Typography>
         <Typography variant="h6">&#8377; {props.data.price}</Typography>
         <Typography>{props.data.description}</Typography>
-        <Box display={"flex"} justifyContent="flex-start" mt={1} gap={3}>
+        <Box display={"flex"} justifyContent="space-between" mt={1} gap={3}>
           <Box display={"flex"} justifyContent="flex-start" gap={4}>
             <Box sx={{ cursor: "pointer" }}>
               <AddIcon fontSize="small" onClick={plus} />
@@ -110,6 +112,11 @@ const Cartcomp = (props) => {
             <Box sx={{ cursor: "pointer" }}>
               <RemoveIcon fontSize="small" onClick={sub} />
             </Box>
+          </Box>
+          <Box>
+            {/* <IconButton style={{ color: "red" }} aria-label="delete">
+              <DeleteIcon />
+            </IconButton> */}
           </Box>
         </Box>
       </Box>

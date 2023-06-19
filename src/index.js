@@ -9,6 +9,7 @@ export const Context = createContext();
 const Appwrapper = () => {
   const [Authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(false);
+
   return (
     <Context.Provider
       value={{ Authenticated, setAuthenticated, loading, setLoading }}

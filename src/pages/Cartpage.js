@@ -153,7 +153,8 @@ const Cartpage = () => {
                           style={{
                             paddingTop: "15px",
                             paddingBottom: "15px",
-                            fontSize: "18px",
+                            fontSize: "25px",
+                            fontWeight: "bold",
                           }}
                         >
                           {total}

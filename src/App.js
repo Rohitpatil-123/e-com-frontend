@@ -11,6 +11,7 @@ import Cartpage from "./pages/Cartpage";
 import Searchdash from "./pages/Searchdash";
 
 import Adminauth from "./components/Adminauth";
+import Admin from "./pages/Admin";
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +23,7 @@ function App() {
         <Route path="/Product" element={<Product />} />
         <Route path="/Addproduct" element={<Addproduct />} />
         <Route path="/cart" element={<Cartpage />} />
-        <Route path="/admin" element={<Adminauth />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
       <Toaster />
