@@ -7,11 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Empty from "../components/Empty";
 import Loader from "../components/Loader";
-import Custcard from "../components/Custcard";
 
 const Cartpage = () => {
   const [total, setTotal] = useState(0);
-
+  const [state, setState] = useState("");
   const [success, setsuccess] = useState(false);
   const [count, setCount] = useState({});
 
@@ -44,6 +43,7 @@ const Cartpage = () => {
   useEffect(() => {
     fetchcart();
   }, [count, total]);
+  if (total == 0) return <Empty />;
   return (
     <>
       {count === {} ? (
@@ -72,6 +72,7 @@ const Cartpage = () => {
                         data={products}
                         list={count.list}
                         index={index}
+                        pagest={state}
                       />
                     );
                   })}

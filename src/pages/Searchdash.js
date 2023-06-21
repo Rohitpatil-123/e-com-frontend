@@ -36,6 +36,7 @@ const Searchdash = () => {
           padding={2}
           display={"flex"}
           justifyContent={"center"}
+          flexDirection={{ lg: "row", xs: "column" }}
         >
           <FormControl
             sx={{
@@ -63,14 +64,28 @@ const Searchdash = () => {
             inputProps={{ "aria-label": "Without label" }}
             // sx={{ zIndex: -1 }}
           >
-            <MenuItem value="">
+            <MenuItem value="Category filter">
               <em>Price Filters</em>
             </MenuItem>
-            <MenuItem value={10}> less than 10k</MenuItem>
-            <MenuItem value={20}> less than 20k</MenuItem>
-            <MenuItem value={30}> less than 30k</MenuItem>
-            <MenuItem value={30}>Greater Than 30k</MenuItem>
+            <MenuItem value={""}>Remove Filter</MenuItem>
+            <MenuItem value={"mobile"}> Mobile</MenuItem>
+            <MenuItem value={"electronics"}> Electronics</MenuItem>
+            <MenuItem value={"grocerry"}>Grocerry</MenuItem>
           </Select> */}
+          <Select
+            value={price}
+            placeholder="select the category"
+            onChange={(event) => setPrice(event.target.value)}
+            displayEmpty
+            inputProps={{ "aria-label": "Without label" }}
+          >
+            <MenuItem value="">
+              <em>select the category</em>
+            </MenuItem>
+            <MenuItem value={"mobile"}>Mobile</MenuItem>
+            <MenuItem value={"electronics"}>Electronics</MenuItem>
+            <MenuItem value={"grocery"}>Grocery</MenuItem>
+          </Select>
         </Box>
         {data.length !== 0 ? (
           <Box
@@ -87,6 +102,15 @@ const Searchdash = () => {
                   return value;
                 } else if (
                   value.name.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return value;
+                }
+              })
+              .filter((value) => {
+                if (price == "") {
+                  return value;
+                } else if (
+                  value.category.toLowerCase().includes(price.toLowerCase())
                 ) {
                   return value;
                 }

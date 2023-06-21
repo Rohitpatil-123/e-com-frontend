@@ -55,6 +55,7 @@ const Reviews = () => {
               "& .MuiRating-iconHover": {
                 color: "purple",
               },
+              zIndex: -1,
             }}
           />
         </Box>
@@ -102,6 +103,7 @@ const Reviews = () => {
               "& .MuiRating-iconHover": {
                 color: "purple",
               },
+              zIndex: -1,
             }}
           />
         </Box>
@@ -149,6 +151,7 @@ const Reviews = () => {
               "& .MuiRating-iconHover": {
                 color: "purple",
               },
+              zIndex: -1,
             }}
           />
         </Box>

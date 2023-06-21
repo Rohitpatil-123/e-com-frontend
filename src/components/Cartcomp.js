@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import React from "react";
+import React, { useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { toast } from "react-hot-toast";
@@ -48,6 +48,7 @@ const Cartcomp = (props) => {
         );
         if (resdata.data.success === true) {
           toast.success("removed from cart");
+          props.pagest("hsu");
         } else {
           toast.error("error");
         }
@@ -64,6 +65,8 @@ const Cartcomp = (props) => {
   const sub = () => {
     delcart();
   };
+
+  // useEffect(()=>{},[])
 
   return (
     <Box

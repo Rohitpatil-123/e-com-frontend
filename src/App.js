@@ -9,8 +9,6 @@ import { Toaster } from "react-hot-toast";
 import Addproduct from "./components/Addproduct";
 import Cartpage from "./pages/Cartpage";
 import Searchdash from "./pages/Searchdash";
-
-import Adminauth from "./components/Adminauth";
 import Admin from "./pages/Admin";
 function App() {
   return (

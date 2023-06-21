@@ -46,7 +46,6 @@ export default function ButtonAppBar() {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
-    console.log(resdata.data.data.isAdmin);
     if (resdata.data.success) {
       setAuthenticated(true);
       if (resdata.data.data.isAdmin == true) {
