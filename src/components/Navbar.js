@@ -28,7 +28,7 @@ export default function ButtonAppBar() {
   const handleLogout = async () => {
     try {
       setLoading(true);
-      const data = await axios.get("http://localhost:5000/logout", {
+      const data = await axios.get("https://e-com-rksk.onrender.com/logout", {
         withCredentials: true,
       });
       if (data) {
@@ -42,7 +42,7 @@ export default function ButtonAppBar() {
     }
   };
   const isauth = async () => {
-    const resdata = await axios.get("http://localhost:5000/getuser", {
+    const resdata = await axios.get("https://e-com-rksk.onrender.com/getuser", {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });

@@ -31,7 +31,7 @@ const Product = (props) => {
   const fetchdata = async () => {
     try {
       const resdata = await axios.get(
-        `http://localhost:5000/prodid/${params.get("id")}`
+        `https://e-com-rksk.onrender.com/prodid/${params.get("id")}`
       );
 
       setData(resdata.data.data[0]);

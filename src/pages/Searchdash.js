@@ -19,7 +19,9 @@ const Searchdash = () => {
   const [data, setData] = useState([]);
 
   const getdata = async () => {
-    const resdata = await axios.get("http://localhost:5000/getallproduct");
+    const resdata = await axios.get(
+      "https://e-com-rksk.onrender.com/getallproduct"
+    );
     setData(resdata.data.data);
   };
 

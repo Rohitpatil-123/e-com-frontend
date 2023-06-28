@@ -38,10 +38,14 @@ function Login() {
     seterrmesg("");
 
     try {
-      const data = await axios.post("http://localhost:5000/login", values, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
+      const data = await axios.post(
+        "https://e-com-rksk.onrender.com/login",
+        values,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
       if (data.data.success) {
         toast.success(data.data.message);
         navigate("/");
