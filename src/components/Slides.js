@@ -29,7 +29,7 @@ export default function Slides(props) {
 
 function Item(props) {
   return (
-    <Box class="w-full px-8 py-1">
+    <Box class="w-full  py-1">
       {/* <div
         style={{
           width: "100%",

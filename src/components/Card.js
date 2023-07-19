@@ -9,7 +9,7 @@ import banner from "../assets/bannernn3.png";
 export default function ImgMediaCard() {
   return (
     <Card
-      position={"relative"}
+      // position={"relative"}
       sx={{ maxWidth: 345 }}
       className="drop-shadow-lg"
     >

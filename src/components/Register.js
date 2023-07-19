@@ -52,7 +52,7 @@ const Register = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        "https://e-com-rksk.onrender.com/register",
+        "http://localhost:5000/register",
         values,
         {
           headers: { "Content-Type": "application/json" },

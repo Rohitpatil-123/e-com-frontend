@@ -22,6 +22,7 @@ function App() {
         <Route path="/Addproduct" element={<Addproduct />} />
         <Route path="/cart" element={<Cartpage />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/card" element={<Admin />} />
       </Routes>
       <Footer />
       <Toaster />

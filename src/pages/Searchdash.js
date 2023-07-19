@@ -12,6 +12,7 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 import Slides from "../components/Slides";
 import Loader from "../components/Loader";
+import Slider from "../components/Slider";
 
 const Searchdash = () => {
   const [search, setSearch] = useState("");
@@ -19,47 +20,49 @@ const Searchdash = () => {
   const [data, setData] = useState([]);
 
   const getdata = async () => {
-    const resdata = await axios.get(
-      "https://e-com-rksk.onrender.com/getallproduct"
-    );
+    const resdata = await axios.get("http://localhost:5000/getallproduct");
     setData(resdata.data.data);
   };
 
   useEffect(() => {
     getdata();
+    console.log(data);
   }, [search, price]);
   return (
-    <Box px={{ lg: 10, xs: 1 }} py={1}>
-      <Slides />
-
-      <Box p={2}>
-        <Box
-          borderBottom={"1px solid grey"}
-          padding={2}
-          display={"flex"}
-          justifyContent={"center"}
-          flexDirection={{ lg: "row", xs: "column" }}
-        >
-          <FormControl
-            sx={{
-              m: 1,
-              width: { lg: "80ch", md: "50ch", xs: "30ch" },
-              color: "yellow",
-              position: "relative",
-            }}
-            variant="standard"
+    <>
+      <Box px={{ lg: 10, xs: 1 }} py={1}>
+        <Slides />
+        <Slider />
+        <Box p={2}>
+          <Box
+            borderBottom={"1px solid grey"}
+            padding={2}
+            display={"flex"}
+            justifyContent={"center"}
+            flexDirection={{ lg: "row", xs: "column" }}
           >
-            <InputLabel htmlFor="standard-adornment-amount">Search</InputLabel>
-            <Input
-              id="standard-adornment-amount"
-              startAdornment={<SearchIcon position="start">$</SearchIcon>}
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
+            <FormControl
+              sx={{
+                m: 1,
+                width: { lg: "80ch", md: "50ch", xs: "30ch" },
+                color: "yellow",
+                position: "relative",
               }}
-            />
-          </FormControl>
-          {/* <Select
+              variant="standard"
+            >
+              <InputLabel htmlFor="standard-adornment-amount">
+                Search
+              </InputLabel>
+              <Input
+                id="standard-adornment-amount"
+                startAdornment={<SearchIcon position="start">$</SearchIcon>}
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+            </FormControl>
+            {/* <Select
             value={price}
             placeholder="select the category"
             onChange={(event) => setPrice(event.target.value)}
@@ -74,73 +77,74 @@ const Searchdash = () => {
             <MenuItem value={"electronics"}> Electronics</MenuItem>
             <MenuItem value={"grocerry"}>Grocerry</MenuItem>
           </Select> */}
-          <Select
-            value={price}
-            placeholder="select the category"
-            onChange={(event) => setPrice(event.target.value)}
-            displayEmpty
-            inputProps={{ "aria-label": "Without label" }}
-          >
-            <MenuItem value="">
-              <em>select the category</em>
-            </MenuItem>
-            <MenuItem value={"mobile"}>Mobile</MenuItem>
-            <MenuItem value={"electronics"}>Electronics</MenuItem>
-            <MenuItem value={"grocery"}>Grocery</MenuItem>
-          </Select>
-        </Box>
-        {data.length !== 0 ? (
-          <Box
-            marginY={2}
-            display={"flex"}
-            justifyContent={"center"}
-            flexDirection={"row"}
-            flexWrap={"wrap"}
-            gap={{ lg: 2, xs: 1 }}
-          >
-            {data
-              .filter((value) => {
-                if (search === "") {
-                  return value;
-                } else if (
-                  value.name.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  return value;
-                }
-              })
-              .filter((value) => {
-                if (price == "") {
-                  return value;
-                } else if (
-                  value.category.toLowerCase().includes(price.toLowerCase())
-                ) {
-                  return value;
-                }
-              })
-              .map((product) => {
-                return (
-                  <Custcard
-                    data={product}
-                    name="Add To Cart"
-                    key={product._id}
-                  />
-                );
-              })}
+            <Select
+              value={price}
+              placeholder="select the category"
+              onChange={(event) => setPrice(event.target.value)}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value="">
+                <em>select the category</em>
+              </MenuItem>
+              <MenuItem value={"mobile"}>Mobile</MenuItem>
+              <MenuItem value={"electronics"}>Electronics</MenuItem>
+              <MenuItem value={"grocery"}>Grocery</MenuItem>
+            </Select>
           </Box>
-        ) : (
-          <Loader />
-        )}
+          {data.length !== 0 ? (
+            <Box
+              marginY={2}
+              display={"flex"}
+              justifyContent={"center"}
+              flexDirection={"row"}
+              flexWrap={"wrap"}
+              gap={{ lg: 2, xs: 1 }}
+            >
+              {data
+                .filter((value) => {
+                  if (search === "") {
+                    return value;
+                  } else if (
+                    value.name.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return value;
+                  }
+                })
+                .filter((value) => {
+                  if (price == "") {
+                    return value;
+                  } else if (
+                    value.category.toLowerCase().includes(price.toLowerCase())
+                  ) {
+                    return value;
+                  }
+                })
+                .map((product) => {
+                  return (
+                    <Custcard
+                      data={product}
+                      name="Add To Cart"
+                      key={product._id}
+                    />
+                  );
+                })}
+            </Box>
+          ) : (
+            <Loader />
+          )}
+        </Box>
+        <Typography
+          variant="h4"
+          textAlign={"center"}
+          fontFamily={"Roboto"}
+          fontWeight={"bold"}
+        >
+          Customer Reviews
+        </Typography>
+        <Reviews />
       </Box>
-      <Typography
-        variant="h4"
-        textAlign={"center"}
-        fontFamily={"Roboto"}
-        fontWeight={"bold"}
-      >
-        Customer Reviews
-      </Typography>
-      <Reviews />
-    </Box>
+    </>
   );
 };
 

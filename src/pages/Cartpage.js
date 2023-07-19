@@ -16,13 +16,10 @@ const Cartpage = () => {
 
   const navigate = useNavigate();
   const fetchcart = async () => {
-    const resdata = await axios.get(
-      "https://e-com-rksk.onrender.com/cartelem",
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
+    const resdata = await axios.get("http://localhost:5000/cartelem", {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
     if (resdata.data.success === true) {
       setCount(resdata.data);
       setTotal(resdata.data.total);
