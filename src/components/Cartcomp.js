@@ -17,7 +17,7 @@ const Cartcomp = (props) => {
     try {
       if (Authenticated) {
         const resdata = await axios.get(
-          `http://localhost:5000/addcart/${props.data._id}`,
+          `https://e-com-rksk.onrender.com/addcart/${props.data._id}`,
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
@@ -40,7 +40,7 @@ const Cartcomp = (props) => {
     try {
       if (Authenticated) {
         const resdata = await axios.get(
-          `http://localhost:5000/cartremove/${props.data._id}`,
+          `https://e-com-rksk.onrender.com/cartremove/${props.data._id}`,
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,

@@ -30,7 +30,7 @@ const Product = (props) => {
   const fetchdata = async () => {
     try {
       const resdata = await axios.get(
-        `http://localhost:5000/prodid/${params.get("id")}`
+        `https://e-com-rksk.onrender.com/prodid/${params.get("id")}`
       );
 
       setData(resdata.data.data[0]);
@@ -42,7 +42,7 @@ const Product = (props) => {
   const handleclick = async () => {
     if (Authenticated) {
       const resdata = await axios.get(
-        `http://localhost:5000/addcart/${data._id}`,
+        `https://e-com-rksk.onrender.com/addcart/${data._id}`,
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
