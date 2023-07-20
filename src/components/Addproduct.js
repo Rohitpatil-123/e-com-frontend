@@ -44,7 +44,7 @@ const Addproduct = () => {
     console.log(values);
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/addproduct",
+        "https://e-com-rksk.onrender.com/addproduct",
         {
           name,
           price,
