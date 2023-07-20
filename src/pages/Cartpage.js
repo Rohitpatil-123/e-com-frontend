@@ -39,11 +39,43 @@ const Cartpage = () => {
         withCredentials: true,
       }
     );
-    if (resdata.data.success) {
+    console.log(resdata.data);
+
+    paymentfun(resdata.data.data);
+    // if (resdata.data.success) {
+    //   toast.success("Your order has been placed");
+    //   navigate("/");
+    // } else {
+    //   toast.error("something went wrong");
+    // }
+  };
+
+  const paymentfun = async (data) => {
+    var options = {
+      key: "rzp_test_g7U49db3NjnkdM", // Enter the Key ID generated from the Dashboard
+      amount: data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: data.currency,
+      name: "Rcom Store",
+      order_id: data.id,
+      handler: function (response) {
+        completepayment();
+      },
+      theme: {
+        color: "rgb(241, 217, 81)",
+      },
+    };
+    var rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
+
+  const completepayment = async () => {
+    const res = await axios.get("https://e-com-rksk.onrender.com/orderpay", {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
+    if (res.data.success) {
       toast.success("Your order has been placed");
       navigate("/");
-    } else {
-      toast.error("something went wrong");
     }
   };
   useEffect(() => {

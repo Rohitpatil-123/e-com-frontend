@@ -10,6 +10,7 @@ import Addproduct from "./components/Addproduct";
 import Cartpage from "./pages/Cartpage";
 import Searchdash from "./pages/Searchdash";
 import Admin from "./pages/Admin";
+import Profile from "./pages/Profile";
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +23,7 @@ function App() {
         <Route path="/Addproduct" element={<Addproduct />} />
         <Route path="/cart" element={<Cartpage />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/card" element={<Admin />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
       <Toaster />

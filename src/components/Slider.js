@@ -19,7 +19,14 @@ const Slider = () => {
   }, []);
   return (
     <>
-      <Typography variant="h4">Popular mobiles</Typography>
+      <Typography
+        variant="h4"
+        // textAlign={"center"}
+        fontFamily={"Roboto"}
+        fontWeight={"bold"}
+      >
+        Popular mobiles
+      </Typography>
       <div className="gall">
         {data.map((item) => (
           <Comcard data={item} />

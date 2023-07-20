@@ -24,7 +24,9 @@ export default function ButtonAppBar() {
   const navbarstate = () => {
     setnav(!nav);
   };
-
+  const handleprofile = () => {
+    navigate("/profile");
+  };
   const handleLogout = async () => {
     try {
       setLoading(true);
@@ -135,6 +137,17 @@ export default function ButtonAppBar() {
                 }}
               >
                 Dashboard
+              </Button>
+            ) : (
+              ""
+            )}
+            {Authenticated ? (
+              <Button
+                disable={loading}
+                sx={{ color: "black", fontWeight: "bold", fontSize: "17px" }}
+                onClick={handleprofile}
+              >
+                Profile
               </Button>
             ) : (
               ""
