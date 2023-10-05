@@ -1,15 +1,31 @@
-# Getting Started with Create React App
+# R-com E-commerce Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Using MERN Stack to build E-commerce Website
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User-friendly e-commerce application with Admin Panel, while
+  enhancing functionality through Express,Node.js
+- Integrated secure payment through Razorpay for seamless online
+  transactions
 
-### `npm start`
+## Tech
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js
+- ExpressJs
+- NodeJs
+- MongoDB
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation of Dependencies
+
+```
+$ npm install
+```
+
+## Installation of Server Dependencies
+
+```
+$ cd server
+$ npm install
+$ cd ..
+```

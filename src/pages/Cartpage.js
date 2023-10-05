@@ -16,13 +16,10 @@ const Cartpage = () => {
 
   const navigate = useNavigate();
   const fetchcart = async () => {
-    const resdata = await axios.get(
-      "https://e-com-rksk.onrender.com/cartelem",
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
+    const resdata = await axios.get("http://localhost:5000/cartelem", {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
     if (resdata.data.success === true) {
       setCount(resdata.data);
       setTotal(resdata.data.total);
@@ -32,13 +29,10 @@ const Cartpage = () => {
     }
   };
   const proceed = async () => {
-    const resdata = await axios.get(
-      "https://e-com-rksk.onrender.com/placeorder",
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
+    const resdata = await axios.get("http://localhost:5000/placeorder", {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
     console.log(resdata.data);
 
     paymentfun(resdata.data.data);
@@ -69,7 +63,7 @@ const Cartpage = () => {
   };
 
   const completepayment = async () => {
-    const res = await axios.get("https://e-com-rksk.onrender.com/orderpay", {
+    const res = await axios.get("http://localhost:5000/orderpay", {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });

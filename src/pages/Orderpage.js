@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 const Orderpage = () => {
   const [data, setdata] = useState([]);
   const getdata = async () => {
-    const res = await axios.get("https://e-com-rksk.onrender.com/orders", {
+    const res = await axios.get("http://localhost:5000/orders", {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
@@ -13,9 +13,7 @@ const Orderpage = () => {
   };
 
   const handleclick = async (id) => {
-    const resdata = await axios.get(
-      `https://e-com-rksk.onrender.com/deleteorder/${id}`
-    );
+    const resdata = await axios.get(`http://localhost:5000/deleteorder/${id}`);
     if (resdata.data.success == true) {
       toast.success("Order Completed");
     } else {

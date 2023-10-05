@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 const Deletecard = (props) => {
   const deleteprod = async () => {
     const resdata = await axios.delete(
-      `https://e-com-rksk.onrender.com/product/${props.data._id}`,
+      `http://localhost:5000/product/${props.data._id}`,
       {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,

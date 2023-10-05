@@ -8,9 +8,7 @@ import { useEffect, useState } from "react";
 const Slider = () => {
   const [data, setData] = useState([]);
   const fetchdata = async () => {
-    const res = await axios.get(
-      "https://e-com-rksk.onrender.com/product/mobile"
-    );
+    const res = await axios.get("http://localhost:5000/product/mobile");
     setData(res.data.data);
     console.log(data);
   };

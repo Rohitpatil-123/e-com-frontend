@@ -17,7 +17,7 @@ const Cartcomp = (props) => {
     try {
       if (Authenticated) {
         const resdata = await axios.get(
-          `https://e-com-rksk.onrender.com/addcart/${props.data._id}`,
+          `http://localhost:5000/addcart/${props.data._id}`,
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
